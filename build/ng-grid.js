@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 09/05/2014 10:38
+* Compiled At: 10/22/2014 11:43
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -3019,7 +3019,7 @@ ngGridDirectives.directive('ngGrid', ['$compile', '$filter', '$templateCache', '
                                 }
                                 $scope.$emit("ngGridEventData", grid.gridId);
                             };
-                            $scope.$on('$destroy', $scope.$parent.$watch(options.data, dataWatcher));
+                            $scope.$on('$destroy', $scope.$parent.$watch(options.data, dataWatcher, true));
                             $scope.$on('$destroy', $scope.$parent.$watch(options.data + '.length', function() {
                                 dataWatcher($scope.$eval(options.data));
 								$scope.adjustScrollTop(grid.$viewport.scrollTop(), true);
