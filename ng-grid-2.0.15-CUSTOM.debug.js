@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 01/25/2017 16:15
+* Compiled At: 01/25/2017 17:39
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -361,7 +361,7 @@ angular.module('ngGrid.services').factory('$domUtilityService',['$utilityService
         if (grid.styleText) {
             var regex = regexCache[col.index];
             if (!regex) {
-		regex = regexCache[col.index] = new RegExp(".col" + col.index + "{ width: [+-]?\\d+(\\.\\d+)?px; left: [+-]?\\d+(\\.\\d+)?px");
+		regex = regexCache[col.index] = new RegExp(".col" + col.index + " { width: [+-]?\\d+(\\.\\d+)?px; left: [+-]?\\d+(\\.\\d+)?px");
             }
             var css = grid.styleText.replace(regex, ".col" + col.index + " { width: " + col.width + "px; left: " + colLeft + "px");
             domUtilityService.setStyleText(grid, css);
@@ -3371,7 +3371,7 @@ ngGridDirectives.directive('ngGrid', ['$compile', '$filter', '$templateCache', '
                                 }
                                 $scope.$emit("ngGridEventData", grid.gridId);
                             };
-                            $scope.$on('$destroy', $scope.$parent.$watch(options.data, dataWatcher));
+                            $scope.$on('$destroy', $scope.$parent.$watch(options.data, dataWatcher, true));
                             $scope.$on('$destroy', $scope.$parent.$watch(options.data + '.length', function() {
                                 dataWatcher($scope.$eval(options.data));
 								$scope.adjustScrollTop(grid.$viewport.scrollTop(), true);
